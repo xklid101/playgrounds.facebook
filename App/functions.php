@@ -23,3 +23,13 @@ function getExceptionData(Throwable $exception, $previousCount = 2)
     $msg['trace'] = $exception->getTrace();
     return $msg;
 }
+
+
+function getStrWithoutDirPath($string)
+{
+    return str_replace(
+        realpath(__DIR__ . '/..'),
+        '..',
+        $string
+    );
+}

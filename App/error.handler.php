@@ -11,11 +11,18 @@ set_exception_handler(
         foreach ($data as $key => $value) {
             echo "$key: ";
             if (is_array($value)) {
-                echo json_encode($value, JSON_PRETTY_PRINT |  JSON_UNESCAPED_SLASHES);
+                echo getStrWithoutDirPath(
+                    json_encode(
+                        $value,
+                        JSON_PRETTY_PRINT |  JSON_UNESCAPED_SLASHES
+                    )
+                );
                 echo "\n";
                 continue;
             }
-            echo "$value";
+            echo getStrWithoutDirPath(
+                strval($value)
+            );
             echo "\n";
         }
         echo '</pre>';
